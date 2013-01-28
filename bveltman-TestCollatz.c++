@@ -2,7 +2,7 @@
 // projects/collatz/TestCollatz.c++
 // Copyright (C) 2013
 // Glenn P. Downing
-// ---------------------------------
+// --------------------------------
 
 /*
 To test the program:
@@ -75,6 +75,7 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(i ==    6);
         CPPUNIT_ASSERT(j ==   6);}
         
+        //test faliure cases
         void test_read_5 () {
         std::istringstream r("\n");
         int i;
@@ -120,7 +121,8 @@ struct TestCollatz : CppUnit::TestFixture {
     void test_eval_7 () {
         const int v = collatz_eval(1000, 900);
         CPPUNIT_ASSERT(v == 174);}
-        
+    
+    //test where i == j    
     void test_eval_8 () {
         const int v = collatz_eval(5, 5);
         CPPUNIT_ASSERT(v == 6);}
@@ -222,12 +224,16 @@ struct TestCollatz : CppUnit::TestFixture {
     // -----
 
     CPPUNIT_TEST_SUITE(TestCollatz);
+    
+    //read tests
     CPPUNIT_TEST(test_read_1);
     CPPUNIT_TEST(test_read_2);
     CPPUNIT_TEST(test_read_3);
     CPPUNIT_TEST(test_read_4);
     CPPUNIT_TEST(test_read_5);
     CPPUNIT_TEST(test_read_6);
+    
+    //eval tests
     CPPUNIT_TEST(test_eval_1);
     CPPUNIT_TEST(test_eval_2);
     CPPUNIT_TEST(test_eval_3);
@@ -237,16 +243,24 @@ struct TestCollatz : CppUnit::TestFixture {
     CPPUNIT_TEST(test_eval_7);
     CPPUNIT_TEST(test_eval_8);
     CPPUNIT_TEST(test_eval_9);
+    
+    //cycle_length tests
     CPPUNIT_TEST(test_cycle_length_1);
     CPPUNIT_TEST(test_cycle_length_2);
     CPPUNIT_TEST(test_cycle_length_3);
+    
+    //print tests
     CPPUNIT_TEST(test_print_1);
     CPPUNIT_TEST(test_print_2);
     CPPUNIT_TEST(test_print_3);
     CPPUNIT_TEST(test_print_4);
+    
+    //solve tests
     CPPUNIT_TEST(test_solve_1);
     CPPUNIT_TEST(test_solve_2);
     CPPUNIT_TEST(test_solve_3);
+    
+    //update_lazyCache tests
     CPPUNIT_TEST(test_update_lazyCache_1);
     CPPUNIT_TEST(test_update_lazyCache_2);
     CPPUNIT_TEST(test_update_lazyCache_3);
