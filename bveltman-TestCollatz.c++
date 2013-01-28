@@ -2,7 +2,7 @@
 // projects/collatz/TestCollatz.c++
 // Copyright (C) 2013
 // Glenn P. Downing
-// --------------------------------
+// ---------------------------------
 
 /*
 To test the program:
