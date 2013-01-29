@@ -141,15 +141,15 @@ struct TestCollatz : CppUnit::TestFixture {
     }
     
     void test_update_lazyCache_2 () {
-    	collatz_update_lazyCache (4, 200);
-    	CPPUNIT_ASSERT(lazyCache[4] == 200);
+    	collatz_update_lazyCache (4, 3);
+    	CPPUNIT_ASSERT(lazyCache[4] == 3);
     }
     
     void test_update_lazyCache_3 () {
     	collatz_update_lazyCache (3, 100);
     	CPPUNIT_ASSERT(lazyCache[3] == 100);
-    	collatz_update_lazyCache (3, 1);
-    	CPPUNIT_ASSERT(lazyCache[3] == 1);
+    	collatz_update_lazyCache (3, 8);
+    	CPPUNIT_ASSERT(lazyCache[3] == 8);
     }
     
     // -----------
@@ -172,6 +172,56 @@ struct TestCollatz : CppUnit::TestFixture {
     	count = collatz_cycle_length (9);
     	CPPUNIT_ASSERT (count == 20);
     }
+    
+    // --------------------
+    // assign_intermediates
+    // --------------------
+    void test_assign_intermediates_1 () {
+    	collatz_assign_intermediates (4,3);
+    	CPPUNIT_ASSERT (lazyCache[2] == 2);
+    }
+    
+    void test_assign_intermediates_2 () {
+    	collatz_assign_intermediates (8,4);
+    	CPPUNIT_ASSERT (lazyCache[4] == 3);
+    	CPPUNIT_ASSERT (lazyCache[2] == 2);
+    }
+    
+    void test_assign_intermediates_3 () {
+    	collatz_assign_intermediates (16,5);
+    	CPPUNIT_ASSERT (lazyCache[8] == 4);
+    	CPPUNIT_ASSERT (lazyCache[4] == 3);
+    	CPPUNIT_ASSERT (lazyCache[2] == 2);
+    }
+    
+    // --------------
+    // minimize range
+    // --------------
+    void test_minimize_range_1 () {
+    	int min = 1;
+    	int max = 10;
+    	collatz_minimize_range (min, max);
+    	CPPUNIT_ASSERT (min == 5);
+    	CPPUNIT_ASSERT (max == 10);
+    }
+    
+     void test_minimize_range_2 () {
+    	int min = 1;
+    	int max = 20;
+    	collatz_minimize_range (min, max);
+    	CPPUNIT_ASSERT (min == 10);
+    	CPPUNIT_ASSERT (max == 20);
+    }
+    
+    void test_minimize_range_3 () {
+    	int min = 10;
+    	int max = 100;
+    	collatz_minimize_range (min, max);
+    	CPPUNIT_ASSERT (min == 50);
+    	CPPUNIT_ASSERT (max == 100);
+    }
+    
+    
 
     // -----
     // print
@@ -264,6 +314,17 @@ struct TestCollatz : CppUnit::TestFixture {
     CPPUNIT_TEST(test_update_lazyCache_1);
     CPPUNIT_TEST(test_update_lazyCache_2);
     CPPUNIT_TEST(test_update_lazyCache_3);
+    
+    //assign_intermediates tests
+    CPPUNIT_TEST(test_assign_intermediates_1);
+    CPPUNIT_TEST(test_assign_intermediates_2);
+    CPPUNIT_TEST(test_assign_intermediates_3);
+    
+    //minimize_range tests
+    CPPUNIT_TEST(test_minimize_range_1);
+    CPPUNIT_TEST(test_minimize_range_2);
+    CPPUNIT_TEST(test_minimize_range_3);
+    
     CPPUNIT_TEST_SUITE_END();};
 
 // ----
