@@ -1,8 +1,5 @@
-==5671== Memcheck, a memory error detector
-==5671== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
-==5671== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
-==5671== Command: TestCollatz
-==5671== 
+g++ -ldl -pedantic -std=c++0x -Wall Collatz.c++ TestCollatz.c++ -lcppunit -o TestCollatz
+valgrind TestCollatz
 TestCollatz.c++
 ...................
 
@@ -11,12 +8,3 @@ OK (19 tests)
 
 
 Done.
-==5671== 
-==5671== HEAP SUMMARY:
-==5671==     in use at exit: 0 bytes in 0 blocks
-==5671==   total heap usage: 531 allocs, 531 frees, 70,254 bytes allocated
-==5671== 
-==5671== All heap blocks were freed -- no leaks are possible
-==5671== 
-==5671== For counts of detected and suppressed errors, rerun with: -v
-==5671== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
