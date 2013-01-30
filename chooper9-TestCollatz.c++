@@ -49,31 +49,30 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(j ==   10);}
 
     void test_read_1 () {
-        std::istringstream r("43 657\n");
+        std::istringstream r("100 200\n");
         int i;
         int j;
         const bool b = collatz_read(r, i, j);
         CPPUNIT_ASSERT(b == true);
-        CPPUNIT_ASSERT(i ==    43);
-        CPPUNIT_ASSERT(j ==   657);}
+        CPPUNIT_ASSERT(i == 100);
+        CPPUNIT_ASSERT(j == 200);}
 
     void test_read_2 () {
-        std::istringstream r("4570 6129\n");
+        std::istringstream r("201 210\n");
         int i;
         int j;
         const bool b = collatz_read(r, i, j);
         CPPUNIT_ASSERT(b == true);
-        CPPUNIT_ASSERT(i ==    4570);
-        CPPUNIT_ASSERT(j ==   6129);}
+        CPPUNIT_ASSERT(i == 201);
+        CPPUNIT_ASSERT(j == 210);}
 
     void test_read_3 () {
-        std::istringstream r("2526 3\n");
+        std::istringstream r("");
         int i;
         int j;
         const bool b = collatz_read(r, i, j);
-        CPPUNIT_ASSERT(b == true);
-        CPPUNIT_ASSERT(i ==    2526);
-        CPPUNIT_ASSERT(j ==   3);}
+        CPPUNIT_ASSERT(b == false);}
+
 
     // ----
     // eval
@@ -96,94 +95,47 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(v == 174);}
 
     void test_eval_5 () {
-        const int v = collatz_eval(1943, 2281);
-        CPPUNIT_ASSERT(v == 183);}
+        const int v = collatz_eval(9, 9);
+        CPPUNIT_ASSERT(v == 20);}
 
     void test_eval_6 () {
-        const int v = collatz_eval(615, 2974);
-        CPPUNIT_ASSERT(v == 217);}
+        const int v = collatz_eval(210, 201);
+        CPPUNIT_ASSERT(v == 89);}
 
     void test_eval_7 () {
-        const int v = collatz_eval(7459, 6357);
-        CPPUNIT_ASSERT(v == 257);}
+        const int v = collatz_eval(3, 7);
+        CPPUNIT_ASSERT(v == 17);}
 
-    // --------
-    // eval_aux
-    // --------
 
-    void test_eval_aux_1 () {
-	int count = 0;
-	int* count_ptr = &count;
-        collatz_eval_aux(1, count_ptr);
-        CPPUNIT_ASSERT((*count_ptr) == 1);
-    }
+    // ------------
+    // eval helpers
+    // ------------
 
-    void test_eval_aux_2 () {
-    int count = 0;
-    int* count_ptr = &count;
-        collatz_eval_aux(205, count_ptr);
-        CPPUNIT_ASSERT((*count_ptr) == 27);
-    }
+    void test_eval_2_1 () {
+       const int v = collatz_eval_2(1);
+       CPPUNIT_ASSERT(v == 1);}
 
-    void test_eval_aux_3 () {
-    int count = 0;
-    int* count_ptr = &count;
-        collatz_eval_aux(913, count_ptr);
-        CPPUNIT_ASSERT((*count_ptr) == 130);
-    }
+    void test_eval_2_2 () {
+       const int v = collatz_eval_2(9);
+       CPPUNIT_ASSERT(v == 20);}
 
-    void test_eval_aux_4 () {
-    int count = 0;
-    int* count_ptr = &count;
-        collatz_eval_aux(3636, count_ptr);
-        CPPUNIT_ASSERT((*count_ptr) == 18);
-    }
+    void test_eval_2_3 () {
+       const int v = collatz_eval_2(1048576);
+       CPPUNIT_ASSERT(v == 21);}
 
-    void test_eval_aux_5 () {
-    int count = 0;
-    int* count_ptr = &count;
-        collatz_eval_aux(3705, count_ptr);
-        CPPUNIT_ASSERT((*count_ptr) == 163);
-    }
 
-    // -------------
-    // even_odd_eval
-    // -------------
-    
-    void test_even_odd_eval_1 () {
-        const bool v = even_odd_eval(1);
-        CPPUNIT_ASSERT(v == false);
-    }
+    void test_eval_3_1 () {
+       const int v = collatz_eval_2(1);
+       CPPUNIT_ASSERT(v == 1);}
 
-    void test_even_odd_eval_2 () {
-        const bool v = even_odd_eval(2);
-        CPPUNIT_ASSERT(v == true);
-    }
+    void test_eval_3_2 () {
+       const int v = collatz_eval_2(9);
+       CPPUNIT_ASSERT(v == 20);}
 
-    void test_even_odd_eval_3 () {
-        const bool v = even_odd_eval(11);
-        CPPUNIT_ASSERT(v == false);
-    }
+    void test_eval_3_3 () {
+       const int v = collatz_eval_2(349525);
+       CPPUNIT_ASSERT(v == 22);}
 
-    void test_even_odd_eval_4 () {
-        const bool v = even_odd_eval(1432);
-        CPPUNIT_ASSERT(v == true);
-    }
-
-    void test_even_odd_eval_5 () {
-        const bool v = even_odd_eval(23451);
-        CPPUNIT_ASSERT(v == false);
-    }
-
-    void test_even_odd_eval_6 () {
-        const bool v = even_odd_eval(223);
-        CPPUNIT_ASSERT(v == false);
-    }
-
-    void test_even_odd_eval_7 () {
-        const bool v = even_odd_eval(222);
-        CPPUNIT_ASSERT(v == true);
-    }
 
     // -----
     // print
@@ -196,18 +148,19 @@ struct TestCollatz : CppUnit::TestFixture {
 
     void test_print_1 () {
         std::ostringstream w;
-        collatz_print(w, 3360, 9320, 262);
-        CPPUNIT_ASSERT(w.str() == "3360 9320 262\n");}
+        collatz_print(w, 201, 210, 89);
+        CPPUNIT_ASSERT(w.str() == "201 210 89\n");}
 
     void test_print_2 () {
         std::ostringstream w;
-        collatz_print(w, 615, 2974, 217);
-        CPPUNIT_ASSERT(w.str() == "615 2974 217\n");}
+        collatz_print(w, 9, 9, 20);
+        CPPUNIT_ASSERT(w.str() == "9 9 20\n");}
 
     void test_print_3 () {
         std::ostringstream w;
-        collatz_print(w, 7459, 6357, 257);
-        CPPUNIT_ASSERT(w.str() == "7459 6357 257\n");}
+        collatz_print(w, 900, 1000, 174);
+        CPPUNIT_ASSERT(w.str() == "900 1000 174\n");}
+
 
     // -----
     // solve
@@ -219,23 +172,24 @@ struct TestCollatz : CppUnit::TestFixture {
         collatz_solve(r, w);
         CPPUNIT_ASSERT(w.str() == "1 10 20\n100 200 125\n201 210 89\n900 1000 174\n");}
 
-        void test_solve_1 () {
-        std::istringstream r("3135 3760\n5662 9091\n9118 159\n505 3808\n");
+    void test_solve_1 () {
+        std::istringstream r("9 9\n");
         std::ostringstream w;
         collatz_solve(r, w);
-        CPPUNIT_ASSERT(w.str() == "3135 3760 238\n5662 9091 262\n9118 159 262\n505 3808 238\n");}
+        CPPUNIT_ASSERT(w.str() == "9 9 20\n");}
 
-        void test_solve_2 () {
-        std::istringstream r("8005 9834\n1255 4674\n4397 3045\n5165 6024\n");
+    void test_solve_2 () {
+        std::istringstream r("210 201\n");
         std::ostringstream w;
         collatz_solve(r, w);
-        CPPUNIT_ASSERT(w.str() == "8005 9834 260\n1255 4674 238\n4397 3045 238\n5165 6024 236\n");}
+        CPPUNIT_ASSERT(w.str() == "210 201 89\n");}
 
-        void test_solve_3 () {
-        std::istringstream r("3959 8018\n9956 6148\n2112 7570\n5266 7378\n");
+    void test_solve_3 () {
+        std::istringstream r("3 7\n");
         std::ostringstream w;
         collatz_solve(r, w);
-        CPPUNIT_ASSERT(w.str() == "3959 8018 262\n9956 6148 262\n2112 7570 262\n5266 7378 262\n");}
+        CPPUNIT_ASSERT(w.str() == "3 7 17\n");}
+
 
     // -----
     // suite
@@ -253,19 +207,12 @@ struct TestCollatz : CppUnit::TestFixture {
     CPPUNIT_TEST(test_eval_5);
     CPPUNIT_TEST(test_eval_6);
     CPPUNIT_TEST(test_eval_7);
-    CPPUNIT_TEST(test_eval_aux_1);
-    CPPUNIT_TEST(test_eval_aux_2);
-    CPPUNIT_TEST(test_eval_aux_3);
-    CPPUNIT_TEST(test_eval_aux_4);
-    CPPUNIT_TEST(test_eval_aux_5);
-    CPPUNIT_TEST(test_eval_aux_6);
-    CPPUNIT_TEST(test_even_odd_eval_1);
-    CPPUNIT_TEST(test_even_odd_eval_2);
-    CPPUNIT_TEST(test_even_odd_eval_3);
-    CPPUNIT_TEST(test_even_odd_eval_4);
-    CPPUNIT_TEST(test_even_odd_eval_5);
-    CPPUNIT_TEST(test_even_odd_eval_6);
-    CPPUNIT_TEST(test_even_odd_eval_7);
+    CPPUNIT_TEST(test_eval_2_1);
+    CPPUNIT_TEST(test_eval_2_2);
+    CPPUNIT_TEST(test_eval_2_3);
+    CPPUNIT_TEST(test_eval_3_1);
+    CPPUNIT_TEST(test_eval_3_2);
+    CPPUNIT_TEST(test_eval_3_3);
     CPPUNIT_TEST(test_print);
     CPPUNIT_TEST(test_print_1);
     CPPUNIT_TEST(test_print_2);
@@ -291,3 +238,4 @@ int main () {
 
     cout << "Done." << endl;
     return 0;}
+

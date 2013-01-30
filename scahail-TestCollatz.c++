@@ -319,7 +319,8 @@ struct TestCollatz : CppUnit::TestFixture {
 
 int main () {
     using namespace std;
-    ios_base::sync_with_stdio(false);  // turn off synchronization with C I/O
+    //ios_base::sync_with_stdio(false);  // turn off synchronization with C I/O
+	//above line commented out because it makes allocations that are not freed
     cout << "TestCollatz.c++" << endl;
 
     CppUnit::TextTestRunner tr;
