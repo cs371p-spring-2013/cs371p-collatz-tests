@@ -12,12 +12,8 @@ To test the program:
     ...
     % locate libcppunit.a
     /usr/lib/libcppunit.a
-    % g++ -lcppunit -ldl -pedantic -std=c++0x -Wall Collatz.c++ TestCollatz.c++ -o TestCollatz.c++.app
-    
-  % or (trying from Piazza)
-	% g++ -ldl -pedantic -std=c++0x -Wall Collatz.c++ TestCollatz.c++ -lcppunit -o TestCollatz.c++.app
-	
-	% valgrind TestCollatz.c++.app >& TestCollatz.c++.out
+    % g++ -pedantic -std=c++0x -Wall Collatz.c++ TestCollatz.c++ -o TestCollatz.c++.app -lcppunit -ldl
+    % valgrind TestCollatz.c++.app >& TestCollatz.c++.out
 */
 
 // --------
