@@ -1,0 +1,10 @@
+g++ -lcppunit -ldl -pedantic -std=c++0x -Wall Collatz.h TestCollatz.c++ -o TestCollatz -g
+TestCollatz
+TestCollatz.c++
+.................
+
+
+OK (17 tests)
+
+
+Done.
