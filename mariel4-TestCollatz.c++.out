@@ -1,0 +1,9 @@
+valgrind TestCollatz
+TestCollatz.c++
+.........................
+
+
+OK (25 tests)
+
+
+Done.
