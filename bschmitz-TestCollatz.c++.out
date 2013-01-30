@@ -1,0 +1,10 @@
+valgrind TestCollatz
+TestCollatz.c++
+.........................
+
+
+OK (25 tests)
+
+
+Done.
+Eval Benchmark - Time Elapsed: 0.570000 seconds
