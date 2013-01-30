@@ -146,13 +146,6 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT((*count_ptr) == 163);
     }
 
-    void test_eval_aux_6 () {
-    int count = 0;
-    int* count_ptr = &count;
-        collatz_eval_aux(2971, count_ptr);
-        CPPUNIT_ASSERT((*count_ptr) == 49);
-    }
-
     // -------------
     // even_odd_eval
     // -------------
