@@ -143,7 +143,7 @@ struct TestCollatz : CppUnit::TestFixture {
     void hk6674_test_print_4 () {
         std::ostringstream w;
         collatz_print(w, 01, 02, 03);
-        CPPUNIT_ASSERT(w.str() == "01 02 03\n");}
+        CPPUNIT_ASSERT(w.str() == "1 2 3\n");}
 
     // -----
     // solve
