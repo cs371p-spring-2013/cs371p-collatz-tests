@@ -12,7 +12,7 @@ To test the program:
     ...
     % locate libcppunit.a
     /usr/lib/libcppunit.a
-    % g++ -pedantic -std=c++0x -Wall Collatz.c++ TestCollatz.c++ -o TestCollatz.c++.app -lcppunit -ldl
+    % g++ -lcppunit -ldl -pedantic -std=c++0x -Wall Collatz.c++ TestCollatz.c++ -o TestCollatz.c++.app
     % valgrind TestCollatz.c++.app >& TestCollatz.c++.out
 */
 
@@ -39,7 +39,7 @@ struct TestCollatz : CppUnit::TestFixture {
     // read
     // ----
 
-    void test_read () {
+    void test_read_1 () {
         std::istringstream r("1 10\n");
         int i;
         int j;
@@ -47,31 +47,33 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(b == true);
         CPPUNIT_ASSERT(i ==    1);
         CPPUNIT_ASSERT(j ==   10);}
-		
-    void test_read_m1 () {
-        std::istringstream r("5 3\n");
+    
+    void test_read_2 () {
+        std::istringstream r("5 4\n");
         int i;
         int j;
         const bool b = collatz_read(r, i, j);
         CPPUNIT_ASSERT(b == true);
         CPPUNIT_ASSERT(i ==    5);
-        CPPUNIT_ASSERT(j ==    3);}
-		
-    void test_read_m2 () {
-        std::istringstream r("");
-        int i;
-        int j;
-        const bool b = collatz_read(r, i, j);
-        CPPUNIT_ASSERT(b == false);}
-		
-    void test_read_m3 () {
-        std::istringstream r("500 22\n");
+        CPPUNIT_ASSERT(j ==   4);}
+    
+    void test_read_3 () {
+        std::istringstream r("54321 775432\n");
         int i;
         int j;
         const bool b = collatz_read(r, i, j);
         CPPUNIT_ASSERT(b == true);
-        CPPUNIT_ASSERT(i ==    500);
-        CPPUNIT_ASSERT(j ==    22);}
+        CPPUNIT_ASSERT(i ==    54321);
+        CPPUNIT_ASSERT(j ==   775432);}
+    
+    void test_read_4 () {
+        std::istringstream r("1 1");
+        int i;
+        int j;
+        const bool b = collatz_read(r, i, j);
+        CPPUNIT_ASSERT(b == true);
+        CPPUNIT_ASSERT(i ==    1);
+        CPPUNIT_ASSERT(j ==   1);}
 
     // ----
     // eval
@@ -80,127 +82,107 @@ struct TestCollatz : CppUnit::TestFixture {
     void test_eval_1 () {
         const int v = collatz_eval(1, 10);
         CPPUNIT_ASSERT(v == 20);}
-
+    
     void test_eval_2 () {
         const int v = collatz_eval(100, 200);
         CPPUNIT_ASSERT(v == 125);}
-
+    
     void test_eval_3 () {
         const int v = collatz_eval(201, 210);
         CPPUNIT_ASSERT(v == 89);}
-
+    
     void test_eval_4 () {
         const int v = collatz_eval(900, 1000);
         CPPUNIT_ASSERT(v == 174);}
-		
-    void test_eval_m1 () {
-        const int v = collatz_eval(5, 3);
-        CPPUNIT_ASSERT(v == 8);}
-		
-    void test_eval_m2 () {
-        const int v = collatz_eval(4, 4);
-        CPPUNIT_ASSERT(v == 3);}
-		
-    void test_eval_m3 () {
-        const int v = collatz_eval(200, 100);
-        CPPUNIT_ASSERT(v == 125);}
-
-		
-    // ------
-    // helper
-    // ------
-
-    void test_helper_m1 () {
-        const int v = collatz_helper(1, 1);
+    
+    void test_eval_5 () {
+        const int v = collatz_eval(1, 2);
+        CPPUNIT_ASSERT(v == 2);}
+    
+    void test_eval_6 () {
+        const int v = collatz_eval(2, 1);
+        CPPUNIT_ASSERT(v == 2);}
+    
+    void test_eval_7 () {
+        const int v = collatz_eval(1, 1);
         CPPUNIT_ASSERT(v == 1);}
-		
-    void test_helper_m2 () {
-        const int v = collatz_helper(5, 1);
-        CPPUNIT_ASSERT(v == 6);}
-		
-    void test_helper_m3 () {
-        const int v = collatz_helper(64, 1);
-        CPPUNIT_ASSERT(v == 7);}
-		
+
     // -----
     // print
     // -----
 
-    void test_print () {
+    void test_print_1 () {
         std::ostringstream w;
         collatz_print(w, 1, 10, 20);
         CPPUNIT_ASSERT(w.str() == "1 10 20\n");}
-		
-    void test_print_m1 () {
+    
+    void test_print_2 () {
         std::ostringstream w;
-        collatz_print(w, 10, 1, 20);
-        CPPUNIT_ASSERT(w.str() == "10 1 20\n");}
-		
-    void test_print_m2 () {
+        collatz_print(w, 1, 2, 2);
+        CPPUNIT_ASSERT(w.str() == "1 2 2\n");}
+    
+    void test_print_3 () {
         std::ostringstream w;
-        collatz_print(w, 3, 5, 8);
-        CPPUNIT_ASSERT(w.str() == "3 5 8\n");}
-		
-    void test_print_m3 () {
+        collatz_print(w, 2, 1, 2);
+        CPPUNIT_ASSERT(w.str() == "2 1 2\n");}
+    
+    void test_print_4 () {
         std::ostringstream w;
-        collatz_print(w, 201, 210, 89);
-        CPPUNIT_ASSERT(w.str() == "201 210 89\n");}
+        collatz_print(w, 1, 1, 1);
+        CPPUNIT_ASSERT(w.str() == "1 1 1\n");}
 
     // -----
     // solve
     // -----
 
-    void test_solve () {
+    void test_solve_1 () {
         std::istringstream r("1 10\n100 200\n201 210\n900 1000\n");
         std::ostringstream w;
         collatz_solve(r, w);
         CPPUNIT_ASSERT(w.str() == "1 10 20\n100 200 125\n201 210 89\n900 1000 174\n");}
-		
-    void test_solve_m1 () {
-        std::istringstream r("10 1\n200 100\n210 201\n1000 900\n");
+    
+    void test_solve_2 () {
+        std::istringstream r("2 1\n");
         std::ostringstream w;
         collatz_solve(r, w);
-        CPPUNIT_ASSERT(w.str() == "10 1 20\n200 100 125\n210 201 89\n1000 900 174\n");}
-		
-    void test_solve_m2 () {
-        std::istringstream r("2 5\n1 2\n3 6\n");
+        CPPUNIT_ASSERT(w.str() == "2 1 2\n");}
+    
+    void test_solve_3 () {
+        std::istringstream r("1 2\n");
         std::ostringstream w;
         collatz_solve(r, w);
-        CPPUNIT_ASSERT(w.str() == "2 5 8\n1 2 2\n3 6 9\n");}
-		
-    void test_solve_m3 () {
-        std::istringstream r("4 5\n");
+        CPPUNIT_ASSERT(w.str() == "1 2 2\n");}
+    
+    void test_solve_4 () {
+        std::istringstream r("1 1\n");
         std::ostringstream w;
         collatz_solve(r, w);
-        CPPUNIT_ASSERT(w.str() == "4 5 6\n");}
+        CPPUNIT_ASSERT(w.str() == "1 1 1\n");}
 
     // -----
     // suite
     // -----
 
     CPPUNIT_TEST_SUITE(TestCollatz);
-    CPPUNIT_TEST(test_read);
-    CPPUNIT_TEST(test_read_m1);
-    CPPUNIT_TEST(test_read_m2);
-    CPPUNIT_TEST(test_read_m3);
+    CPPUNIT_TEST(test_read_1);
+    CPPUNIT_TEST(test_read_2);
+    CPPUNIT_TEST(test_read_3);
+    CPPUNIT_TEST(test_read_4);
     CPPUNIT_TEST(test_eval_1);
     CPPUNIT_TEST(test_eval_2);
     CPPUNIT_TEST(test_eval_3);
     CPPUNIT_TEST(test_eval_4);
-    CPPUNIT_TEST(test_eval_m1);
-    CPPUNIT_TEST(test_eval_m2);
-    CPPUNIT_TEST(test_eval_m3);
-    CPPUNIT_TEST(test_helper_m1);
-    CPPUNIT_TEST(test_helper_m2);
-    CPPUNIT_TEST(test_helper_m3);
-    CPPUNIT_TEST(test_print);
-    CPPUNIT_TEST(test_print_m1);
-    CPPUNIT_TEST(test_print_m2);
-    CPPUNIT_TEST(test_print_m3);
-    CPPUNIT_TEST(test_solve);
-    CPPUNIT_TEST(test_solve_m1);
-    CPPUNIT_TEST(test_solve_m2);
-    CPPUNIT_TEST(test_solve_m3);
+    CPPUNIT_TEST(test_eval_5);
+    CPPUNIT_TEST(test_eval_6);
+    CPPUNIT_TEST(test_eval_7);
+    CPPUNIT_TEST(test_print_1);
+    CPPUNIT_TEST(test_print_2);
+    CPPUNIT_TEST(test_print_3);
+    CPPUNIT_TEST(test_print_4);
+    CPPUNIT_TEST(test_solve_1);
+    CPPUNIT_TEST(test_solve_2);
+    CPPUNIT_TEST(test_solve_3);
+    CPPUNIT_TEST(test_solve_4);
     CPPUNIT_TEST_SUITE_END();};
 
 // ----
@@ -209,7 +191,7 @@ struct TestCollatz : CppUnit::TestFixture {
 
 int main () {
     using namespace std;
-    ios_base::sync_with_stdio(false);  // turn off synchronization with C I/O
+    //ios_base::sync_with_stdio(false);  // turn off synchronization with C I/O
     cout << "TestCollatz.c++" << endl;
 
     CppUnit::TextTestRunner tr;
