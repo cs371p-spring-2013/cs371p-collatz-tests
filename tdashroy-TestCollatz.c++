@@ -68,6 +68,25 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(b == false);}
 
 
+    // ----
+    // cycle_length
+    // ---
+
+    void test_cycle_length_1 () {
+        const short c = cycle_length(9);
+        CPPUNIT_ASSERT(c == 20);
+    }
+
+    void test_cycle_length_2 () {
+        const short c = cycle_length(159487);
+        CPPUNIT_ASSERT(c == 246);
+    }
+    
+    void test_cycle_length_3 () {
+        const short c = cycle_length(997823);
+        CPPUNIT_ASSERT(c == 316);
+    }
+
 
     // ----
     // eval
@@ -159,6 +178,9 @@ struct TestCollatz : CppUnit::TestFixture {
     CPPUNIT_TEST(test_read_1);
     CPPUNIT_TEST(test_read_2);
     CPPUNIT_TEST(test_read_3);
+    CPPUNIT_TEST(test_cycle_length_1);
+    CPPUNIT_TEST(test_cycle_length_2);
+    CPPUNIT_TEST(test_cycle_length_3);
     CPPUNIT_TEST(test_eval_1);
     CPPUNIT_TEST(test_eval_2);
     CPPUNIT_TEST(test_eval_3);
