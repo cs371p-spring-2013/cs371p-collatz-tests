@@ -1,0 +1,18 @@
+TestCollatz
+TestCollatz.c++
+...................
+
+
+OK (19 tests)
+
+
+Done.
+valgrind TestCollatz
+TestCollatz.c++
+...................
+
+
+OK (19 tests)
+
+
+Done.
