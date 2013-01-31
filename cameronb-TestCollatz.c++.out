@@ -1,64 +1,17 @@
 valgrind ./TestCollatz
-==32506== Memcheck, a memory error detector
-==32506== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
-==32506== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
-==32506== Command: ./TestCollatz
-==32506== 
+==28557== Memcheck, a memory error detector
+==28557== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==28557== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==28557== Command: ./TestCollatz
+==28557== 
+==28557== WARNING: Support on MacOS 10.8 is experimental and mostly broken.
+==28557== WARNING: Expect incorrect results, assertions and crashes.
+==28557== WARNING: In particular, Memcheck on 32-bit programs will fail to
+==28557== WARNING: detect any errors associated with heap-allocated data.
+==28557== 
+--28557-- ./TestCollatz:
+--28557-- dSYM directory has wrong UUID; consider using --dsymutil=yes
 TestCollatz.c++
-==32506== Invalid write of size 4
-==32506==    at 0x804A0F2: collatz_cycle(int) (Collatz.c++:50)
-==32506==    by 0x804D823: TestCollatz::test_cycle_3() (TestCollatz.c++:139)
-==32506==    by 0x8051BBD: CppUnit::TestCaller<TestCollatz>::runTest() (TestCaller.h:166)
-==32506==    by 0x40787B8: CppUnit::TestCaseMethodFunctor::operator()() const (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x406B527: CppUnit::DefaultProtector::protect(CppUnit::Functor const&, CppUnit::ProtectorContext const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4074C92: CppUnit::ProtectorChain::ProtectFunctor::operator()() const (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4074754: CppUnit::ProtectorChain::protect(CppUnit::Functor const&, CppUnit::ProtectorContext const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x407FB66: CppUnit::TestResult::protect(CppUnit::Functor const&, CppUnit::Test*, std::string const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078559: CppUnit::TestCase::run(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078D55: CppUnit::TestComposite::doRunChildTests(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078C79: CppUnit::TestComposite::run(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4081CCB: CppUnit::TestRunner::WrappingSuite::run(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==  Address 0x436738c is 4 bytes inside a block of size 28 free'd
-==32506==    at 0x40261E7: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
-==32506==    by 0x4133C2C: std::string::_Rep::_M_destroy(std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.13)
-==32506==    by 0x41355DB: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string() (in /usr/lib/libstdc++.so.6.0.13)
-==32506==    by 0x804D3F3: TestCollatz::test_eval_8() (TestCollatz.c++:123)
-==32506==    by 0x8051BBD: CppUnit::TestCaller<TestCollatz>::runTest() (TestCaller.h:166)
-==32506==    by 0x40787B8: CppUnit::TestCaseMethodFunctor::operator()() const (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x406B527: CppUnit::DefaultProtector::protect(CppUnit::Functor const&, CppUnit::ProtectorContext const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4074C92: CppUnit::ProtectorChain::ProtectFunctor::operator()() const (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4074754: CppUnit::ProtectorChain::protect(CppUnit::Functor const&, CppUnit::ProtectorContext const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x407FB66: CppUnit::TestResult::protect(CppUnit::Functor const&, CppUnit::Test*, std::string const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078559: CppUnit::TestCase::run(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078D55: CppUnit::TestComposite::doRunChildTests(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506== 
-==32506== Invalid read of size 4
-==32506==    at 0x804A101: collatz_cycle(int) (Collatz.c++:51)
-==32506==    by 0x804D823: TestCollatz::test_cycle_3() (TestCollatz.c++:139)
-==32506==    by 0x8051BBD: CppUnit::TestCaller<TestCollatz>::runTest() (TestCaller.h:166)
-==32506==    by 0x40787B8: CppUnit::TestCaseMethodFunctor::operator()() const (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x406B527: CppUnit::DefaultProtector::protect(CppUnit::Functor const&, CppUnit::ProtectorContext const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4074C92: CppUnit::ProtectorChain::ProtectFunctor::operator()() const (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4074754: CppUnit::ProtectorChain::protect(CppUnit::Functor const&, CppUnit::ProtectorContext const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x407FB66: CppUnit::TestResult::protect(CppUnit::Functor const&, CppUnit::Test*, std::string const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078559: CppUnit::TestCase::run(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078D55: CppUnit::TestComposite::doRunChildTests(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078C79: CppUnit::TestComposite::run(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4081CCB: CppUnit::TestRunner::WrappingSuite::run(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==  Address 0x436738c is 4 bytes inside a block of size 28 free'd
-==32506==    at 0x40261E7: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
-==32506==    by 0x4133C2C: std::string::_Rep::_M_destroy(std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.13)
-==32506==    by 0x41355DB: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string() (in /usr/lib/libstdc++.so.6.0.13)
-==32506==    by 0x804D3F3: TestCollatz::test_eval_8() (TestCollatz.c++:123)
-==32506==    by 0x8051BBD: CppUnit::TestCaller<TestCollatz>::runTest() (TestCaller.h:166)
-==32506==    by 0x40787B8: CppUnit::TestCaseMethodFunctor::operator()() const (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x406B527: CppUnit::DefaultProtector::protect(CppUnit::Functor const&, CppUnit::ProtectorContext const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4074C92: CppUnit::ProtectorChain::ProtectFunctor::operator()() const (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4074754: CppUnit::ProtectorChain::protect(CppUnit::Functor const&, CppUnit::ProtectorContext const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x407FB66: CppUnit::TestResult::protect(CppUnit::Functor const&, CppUnit::Test*, std::string const&) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078559: CppUnit::TestCase::run(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506==    by 0x4078D55: CppUnit::TestComposite::doRunChildTests(CppUnit::TestResult*) (in /usr/lib/libcppunit-1.12.so.1.0.0)
-==32506== 
 ........................
 
 
@@ -66,18 +19,18 @@ OK (24 tests)
 
 
 Done.
-==32506== 
-==32506== HEAP SUMMARY:
-==32506==     in use at exit: 140,168 bytes in 24 blocks
-==32506==   total heap usage: 665 allocs, 641 frees, 215,491 bytes allocated
-==32506== 
-==32506== LEAK SUMMARY:
-==32506==    definitely lost: 17,240 bytes in 17 blocks
-==32506==    indirectly lost: 0 bytes in 0 blocks
-==32506==      possibly lost: 0 bytes in 0 blocks
-==32506==    still reachable: 122,928 bytes in 7 blocks
-==32506==         suppressed: 0 bytes in 0 blocks
-==32506== Rerun with --leak-check=full to see details of leaked memory
-==32506== 
-==32506== For counts of detected and suppressed errors, rerun with: -v
-==32506== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 21 from 6)
+==28557== 
+==28557== HEAP SUMMARY:
+==28557==     in use at exit: 73,933 bytes in 357 blocks
+==28557==   total heap usage: 1,182 allocs, 825 frees, 170,042 bytes allocated
+==28557== 
+==28557== LEAK SUMMARY:
+==28557==    definitely lost: 23,984 bytes in 20 blocks
+==28557==    indirectly lost: 1,168 bytes in 5 blocks
+==28557==      possibly lost: 4,845 bytes in 56 blocks
+==28557==    still reachable: 43,936 bytes in 276 blocks
+==28557==         suppressed: 0 bytes in 0 blocks
+==28557== Rerun with --leak-check=full to see details of leaked memory
+==28557== 
+==28557== For counts of detected and suppressed errors, rerun with: -v
+==28557== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
