@@ -174,6 +174,24 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(w.str() == "1 10 20\n");}
 
 
+    //-----
+    // collatz_cycles
+    //-----
+
+    void hk6674_collatz_cycles_1 () {
+        const int v = collatz_cycles(1);
+        CPPUNIT_ASSERT(v ==  1);
+    }
+
+    void hk6674_collatz_cycles_2 () {
+        const int v = collatz_cycles(100);
+        CPPUNIT_ASSERT(v == 26);}
+
+    void hk6674_collatz_cycles_3 () {
+        const int v = collatz_cycles(999);
+        CPPUNIT_ASSERT(v == 50);}
+
+
     // -----
     // suite
     // -----
@@ -210,7 +228,14 @@ struct TestCollatz : CppUnit::TestFixture {
     CPPUNIT_TEST(hk6674_test_solve_2);
     CPPUNIT_TEST(hk6674_test_solve_3);
 
+
+// collatz_cycles tests
+    CPPUNIT_TEST(hk6674_collatz_cycles_1);
+    CPPUNIT_TEST(hk6674_collatz_cycles_2);
+    CPPUNIT_TEST(hk6674_collatz_cycles_3);
+
     CPPUNIT_TEST_SUITE_END();};
+
 
 // ----
 // main

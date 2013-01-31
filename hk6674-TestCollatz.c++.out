@@ -1,35 +1,35 @@
-==8383== Memcheck, a memory error detector
-==8383== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==8383== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==8383== Command: ./TestCollatz
-==8383== 
-==8383== WARNING: Support on MacOS 10.8 is experimental and mostly broken.
-==8383== WARNING: Expect incorrect results, assertions and crashes.
-==8383== WARNING: In particular, Memcheck on 32-bit programs will fail to
-==8383== WARNING: detect any errors associated with heap-allocated data.
-==8383== 
---8383-- ./TestCollatz:
---8383-- dSYM directory is missing; consider using --dsymutil=yes
+==10719== Memcheck, a memory error detector
+==10719== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==10719== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==10719== Command: ./TestCollatz
+==10719== 
+==10719== WARNING: Support on MacOS 10.8 is experimental and mostly broken.
+==10719== WARNING: Expect incorrect results, assertions and crashes.
+==10719== WARNING: In particular, Memcheck on 32-bit programs will fail to
+==10719== WARNING: detect any errors associated with heap-allocated data.
+==10719== 
+--10719-- ./TestCollatz:
+--10719-- dSYM directory is missing; consider using --dsymutil=yes
 TestCollatz.c++
-......................
+.........................
 Done.
 
 
-OK (22 tests)
+OK (25 tests)
 
 
-==8383== 
-==8383== HEAP SUMMARY:
-==8383==     in use at exit: 79,049 bytes in 370 blocks
-==8383==   total heap usage: 1,101 allocs, 731 frees, 161,144 bytes allocated
-==8383== 
-==8383== LEAK SUMMARY:
-==8383==    definitely lost: 25,024 bytes in 21 blocks
-==8383==    indirectly lost: 1,168 bytes in 5 blocks
-==8383==      possibly lost: 4,861 bytes in 67 blocks
-==8383==    still reachable: 47,996 bytes in 277 blocks
-==8383==         suppressed: 0 bytes in 0 blocks
-==8383== Rerun with --leak-check=full to see details of leaked memory
-==8383== 
-==8383== For counts of detected and suppressed errors, rerun with: -v
-==8383== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==10719== 
+==10719== HEAP SUMMARY:
+==10719==     in use at exit: 79,049 bytes in 370 blocks
+==10719==   total heap usage: 1,167 allocs, 797 frees, 169,765 bytes allocated
+==10719== 
+==10719== LEAK SUMMARY:
+==10719==    definitely lost: 25,024 bytes in 21 blocks
+==10719==    indirectly lost: 1,168 bytes in 5 blocks
+==10719==      possibly lost: 4,861 bytes in 67 blocks
+==10719==    still reachable: 47,996 bytes in 277 blocks
+==10719==         suppressed: 0 bytes in 0 blocks
+==10719== Rerun with --leak-check=full to see details of leaked memory
+==10719== 
+==10719== For counts of detected and suppressed errors, rerun with: -v
+==10719== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
