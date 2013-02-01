@@ -80,7 +80,7 @@ struct TestCollatz : CppUnit::TestFixture {
         int i;
         int j;
         const bool b = collatz_read(r, i, j);
-        CPPUNIT_ASSERT(b == false);
+        CPPUNIT_ASSERT(b == false);}
 
     // ----
     // eval
@@ -101,6 +101,18 @@ struct TestCollatz : CppUnit::TestFixture {
     void test_eval_4 () {
         const int v = collatz_eval(900, 1000);
         CPPUNIT_ASSERT(v == 174);}
+	
+	void test_eval_5 () {
+        const int v = collatz_eval(10, 1);
+        CPPUNIT_ASSERT(v == 20);}
+	
+	void test_eval_6 () {
+        const int v = collatz_eval(1, 1000000);
+        CPPUNIT_ASSERT(v == 525);}
+	
+	void test_eval_7 () {
+        const int v = collatz_eval(1000, 2000);
+        CPPUNIT_ASSERT(v == 182);}
 
     // -----
     // print
