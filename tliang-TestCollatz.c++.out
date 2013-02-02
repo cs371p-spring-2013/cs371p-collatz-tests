@@ -1,0 +1,53 @@
+==3378== Memcheck, a memory error detector
+==3378== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==3378== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==3378== Command: TestCollatz.c++
+==3378== 
+TestCollatz.c++: 1: //: Permission denied
+==3381== 
+==3381== HEAP SUMMARY:
+==3381==     in use at exit: 950 bytes in 26 blocks
+==3381==   total heap usage: 28 allocs, 2 frees, 1,974 bytes allocated
+==3381== 
+==3381== LEAK SUMMARY:
+==3381==    definitely lost: 0 bytes in 0 blocks
+==3381==    indirectly lost: 0 bytes in 0 blocks
+==3381==      possibly lost: 0 bytes in 0 blocks
+==3381==    still reachable: 950 bytes in 26 blocks
+==3381==         suppressed: 0 bytes in 0 blocks
+==3381== Rerun with --leak-check=full to see details of leaked memory
+==3381== 
+==3381== For counts of detected and suppressed errors, rerun with: -v
+==3381== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
+TestCollatz.c++: 2: //: Permission denied
+==3382== 
+==3382== HEAP SUMMARY:
+==3382==     in use at exit: 950 bytes in 26 blocks
+==3382==   total heap usage: 28 allocs, 2 frees, 1,974 bytes allocated
+==3382== 
+==3382== LEAK SUMMARY:
+==3382==    definitely lost: 0 bytes in 0 blocks
+==3382==    indirectly lost: 0 bytes in 0 blocks
+==3382==      possibly lost: 0 bytes in 0 blocks
+==3382==    still reachable: 950 bytes in 26 blocks
+==3382==         suppressed: 0 bytes in 0 blocks
+==3382== Rerun with --leak-check=full to see details of leaked memory
+==3382== 
+==3382== For counts of detected and suppressed errors, rerun with: -v
+==3382== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
+TestCollatz.c++: 3: Syntax error: "(" unexpected
+==3378== 
+==3378== HEAP SUMMARY:
+==3378==     in use at exit: 950 bytes in 26 blocks
+==3378==   total heap usage: 28 allocs, 2 frees, 1,974 bytes allocated
+==3378== 
+==3378== LEAK SUMMARY:
+==3378==    definitely lost: 0 bytes in 0 blocks
+==3378==    indirectly lost: 0 bytes in 0 blocks
+==3378==      possibly lost: 0 bytes in 0 blocks
+==3378==    still reachable: 950 bytes in 26 blocks
+==3378==         suppressed: 0 bytes in 0 blocks
+==3378== Rerun with --leak-check=full to see details of leaked memory
+==3378== 
+==3378== For counts of detected and suppressed errors, rerun with: -v
+==3378== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)

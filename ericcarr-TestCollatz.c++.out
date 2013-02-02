@@ -1,0 +1,60 @@
+TestCollatz.c++
+.....F.F.F.F..F.F.....F.F.F.F
+
+
+!!!FAILURES!!!
+Test Results:
+Run:  19   Failures: 10   Errors: 0
+
+
+1) test: TestCollatz::test_eval_1 (F) line: 85 TestCollatz.c++
+assertion failed
+- Expression: v == 20
+
+
+2) test: TestCollatz::test_eval_2 (F) line: 89 TestCollatz.c++
+assertion failed
+- Expression: v == 125
+
+
+3) test: TestCollatz::test_eval_3 (F) line: 93 TestCollatz.c++
+assertion failed
+- Expression: v == 89
+
+
+4) test: TestCollatz::test_eval_4 (F) line: 97 TestCollatz.c++
+assertion failed
+- Expression: v == 174
+
+
+5) test: TestCollatz::eval2 (F) line: 106 TestCollatz.c++
+assertion failed
+- Expression: v == 525
+
+
+6) test: TestCollatz::eval3 (F) line: 110 TestCollatz.c++
+assertion failed
+- Expression: v == 439
+
+
+7) test: TestCollatz::test_solve (F) line: 146 TestCollatz.c++
+assertion failed
+- Expression: w.str() == "1 10 20\n100 200 125\n201 210 89\n900 1000 174\n"
+
+
+8) test: TestCollatz::solve1 (F) line: 153 TestCollatz.c++
+assertion failed
+- Expression: w.str() == "8950 831723 509\n120080 877186 525\n356937 775043 509\n480812 346275 449\n"
+
+
+9) test: TestCollatz::solve2 (F) line: 159 TestCollatz.c++
+assertion failed
+- Expression: w.str() == "321305 293350 384\n870552 649863 525\n19452 63590 340\n104548 117351 354\n"
+
+
+10) test: TestCollatz::solve3 (F) line: 165 TestCollatz.c++
+assertion failed
+- Expression: w.str() == "1 1 1\n1 2 2\n230726 235326 381\n79326 490550 449\n"
+
+
+Done.

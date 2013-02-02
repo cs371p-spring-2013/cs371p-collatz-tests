@@ -67,12 +67,12 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(j == 100);}
         
   	void test_read4 () {
-        std::istringstream r("0 100\n");
+        std::istringstream r("4 100\n");
         int i;
         int j;
         const bool b = collatz_read(r, i, j);
         CPPUNIT_ASSERT(b == true);
-        CPPUNIT_ASSERT(i == 0);
+        CPPUNIT_ASSERT(i == 4);
         CPPUNIT_ASSERT(j == 100);}
 
     // ----
